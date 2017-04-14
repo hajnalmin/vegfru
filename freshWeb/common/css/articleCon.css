@@ -47,6 +47,7 @@
 .articleList .artList_info{
     text-align: left;
     margin-left: 10px;
+    width:860px;
 }
 
 .articleList .artList_info .art_title{
@@ -56,6 +57,14 @@
     font: 14px/24px "微软雅黑";
     color: #808080;
 }
+.art_detail{
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+
 /*文章列表样式结束*/
 /*页码样式开始*/
 .conR_pages{

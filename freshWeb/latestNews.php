@@ -1,3 +1,4 @@
+<?php require_once "utils/DBConfig.php"?>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -58,7 +59,7 @@
 
             <div class="con_right clearFix">
                 <!-- 文章列表开始-->
-
+<!--
                 <div class="articleList clearFix">
                     <div class="artList_date">
                         <p>28</p>
@@ -69,67 +70,32 @@
                         <p class="art_detail">近期，部分城市大蒜零售价格超过每公斤20元，多地大蒜价格同比上涨90％以上，不少人惊呼“蒜你狠”卷土重来。　　“新...</p>
                     </div>
                 </div>
-                <div class="articleList clearFix">
-                    <div class="artList_date">
-                        <p>28</p>
-                        <p>2016/11</p>
-                    </div>
-                    <div class="artList_info">
-                        <p class="art_title">美国一批次洋葱重金属超标被通报</p>
-                        <p class="art_detail">11月8日台湾食药署发布边境查验不合格食品名单显示，美国一批次洋葱重金属超标被通报。一批次洋葱的进口商为“舒坦达贸...</p>
-                    </div>
-                </div>
-                <div class="articleList clearFix">
-                    <div class="artList_date">
-                        <p>28</p>
-                        <p>2016/11</p>
-                    </div>
-                    <div class="artList_info">
-                        <p class="art_title">辣椒价格炒上近年同期新高</p>
-                        <p class="art_detail">近期，“蒜你狠”，“姜你军”卷土重来。眼下，冬天的宠儿红辣椒也可谓是出尽风头，价格直线上涨，破近年来同期新高。可以...</p>
-                    </div>
-                </div>
-                <div class="articleList clearFix">
-                    <div class="artList_date">
-                        <p>28</p>
-                        <p>2016/11</p>
-                    </div>
-                    <div class="artList_info">
-                        <p class="art_title">蒜你狠再度来袭蒜农挣得盆满钵满</p>
-                        <p class="art_detail">入冬以来，随着气温下降，想吃大蒜的市民多起来了。然而，2010年的“蒜你狠”还历历在目，今年“蒜你狠”又重新上演。...</p>
-                    </div>
-                </div>
-                <div class="articleList clearFix">
-                    <div class="artList_date">
-                        <p>28</p>
-                        <p>2016/11</p>
-                    </div>
-                    <div class="artList_info">
-                        <p class="art_title">“网红”橙子去年劲爆今年退热</p>
-                        <p class="art_detail">2015年，橙子成为各电商的“网红”产品。继褚橙之后，天天果园、爱鲜蜂、沱沱工社等生鲜电商陆续推出“橙先生.........</p>
-                    </div>
-                </div>
-                <div class="articleList clearFix">
-                    <div class="artList_date">
-                        <p>28</p>
-                        <p>2016/11</p>
-                    </div>
-                    <div class="artList_info">
-                        <p class="art_title">反季节蔬菜上涨　短期价格波动正常</p>
-                        <p class="art_detail">北京市农村科学院蔬菜研究中心研究员陈春秀表示，短期内蔬菜价格的起起伏伏均属正常现象，看待菜价的涨跌还需要一...</p>
-                    </div>
-                </div>
-                <div class="articleList clearFix">
-                    <div class="artList_date">
-                        <p>28</p>
-                        <p>2016/11</p>
-                    </div>
-                    <div class="artList_info">
-                        <p class="art_title">西红柿价格一月内下跌15</p>
-                        <p class="art_detail">一个多月前，做一盘西红柿炒鸡蛋，精打细算的人会告诉你，多放鸡蛋，少放西红柿。这说明当时西红柿比鸡蛋要贵。...</p>
-                    </div>
-                </div>
                 <!-- 文章列表结束-->
+
+
+                <?php
+                $db = DBConfig::createDBConfig();
+                $arr = $db->queryBySQL("select * from news");
+
+                foreach ($arr as $i) {
+                    $timestamp =strtotime($i['newdate']);
+                    $time = date("Y-m-d",$timestamp);
+                    $lastDate = explode('-', $time)[2];
+                    $firstDate = explode('-', $time)[0].'/'.explode('-', $time)[1];
+
+
+                    echo '<div class="articleList clearFix"><div class="artList_date">';
+                    echo "<p>".$lastDate."</p><p>".$firstDate."</p></div>";
+                    echo '<div class="artList_info">';
+                    echo '<p class="art_title">'.$i['newtitle'].'</p>';
+                    echo ' <p class="art_detail">'.$i['news'].'</p></div></div>';
+
+                }
+
+                ?>
+
+
+
             </div>
             <div class="conR_pages">
                 <span>上一页</span>

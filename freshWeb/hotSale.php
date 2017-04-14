@@ -1,3 +1,4 @@
+<?php require_once 'utils/DBConfig.php'?>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -9,7 +10,7 @@
 </head>
 <body>
 
-<?php require "header.php"?>
+<?php require "header.php" ?>
 
 <!-- banner 结束-->
 <div class="banner"></div>
@@ -20,7 +21,7 @@
     <div class="wrap clearFix">
         <div class="con clearFix">
             <!-- 左侧菜单 开始 -->
-            <?php require "navLeft.php"?>
+            <?php require "navLeft.php" ?>
             <!-- 左侧菜单 结束 -->
             <!-- 右侧内容 开始 -->
 
@@ -75,6 +76,23 @@
                         </p>
                         <p class="buy"><a href="#">购买</a></p>
                     </div>-->
+
+                    <?php
+                    $goodcateid = 3;//定义获取的ID
+
+                    $db = DBConfig::createDBConfig();
+                    $arr = $db->queryByVal('goods', ['goodcateid' => $goodcateid]);
+
+                    foreach ($arr as $i) {
+                        echo '<div class="box">';
+                        echo "<img src='upfiles/" . $i['goodimg'] . "'>";
+                        echo '<p class="box_title"><a href="#">'.$i['goodname'].'</a></p>';
+                        echo '<p class="box_price">';
+                        echo '<span>￥</span><span>'.$i['oldprice'].'</span></p>';
+                        echo '<p class="buy"><a href="#">购买</a></p></div>';
+                    }
+
+                    ?>
                 </div>
 
 
@@ -156,7 +174,7 @@
 
 <!-- content 结束-->
 <!-- footer 开始-->
-<?php require "footer.php"?>
+<?php require "footer.php" ?>
 <!-- footer 结束-->
 
 <script src="common/js/jquery-1.7.2.js"></script>
