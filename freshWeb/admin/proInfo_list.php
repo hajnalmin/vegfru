@@ -1,6 +1,6 @@
 <?php require_once "../utils/DBConfig.php";
 
-//获取关于页码的一些信息--判断是直接跳转过来的还是翻页过来的
+//获取关于页码的一些信息--
 $size = 5;
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
 

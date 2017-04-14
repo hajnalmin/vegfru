@@ -1,3 +1,14 @@
+<?php
+require_once "utils/DBConfig.php";
+$db = DBConfig::createDBConfig();
+$id = isset($_GET['id']) ? $_GET['id'] : 1;
+$arr = $db->queryByVal('goods', [
+    "id" => $id
+]);
+$proEachData = $arr[0];
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -10,7 +21,7 @@
 </head>
 <body>
 <!-- 头部 开始-->
-<?php require "header.php"?>
+<?php require "header.php" ?>
 <!-- 头部 结束-->
 <!-- banner 结束-->
 <div class="banner"></div>
@@ -21,11 +32,12 @@
         <div class="buy_show clearFix">
             <div class="show_l">
                 <div class="pro_pic">
-                    <!--<img src="common/img/buy_list1.jpg" alt=""/>-->
+                    <?php echo '<img src="upfiles/' . $proEachData['goodimg'] . '" alt=""/>' ?>
                 </div>
                 <div class="show_collect">
                     <span class="col_span"><i class="icon2 i1"></i>&nbsp;收藏</span>
                     <span class="col_span"><i class="icon2 i2"></i>&nbsp;分享</span>
+
                     <div class="show_share">
                         <a href="#">
                             <i class="shareIcon i3"></i>
@@ -63,17 +75,19 @@
                     </div>
                 </div>
                 <div class="show_btn clearFix">
-                    <span class="show_l_prev">上一个</span>
-                    <span class="show_l_next">下一个</span>
+                    <!--                    <span class="show_l_prev">上一个</span>-->
+                    <?php echo '<span class="show_l_prev"><a href="buyPro.php?id=' . ($id - 1) . '">上一个</a></span>' ?>
+                    <?php echo '<span class="show_l_next"><a href="buyPro.php?id=' . ($proEachData['id'] === 11 ? 'return false' : $proEachData['id'] + 1) . '">下一个</a></span>' ?>
                 </div>
             </div>
             <div class="show_r">
                 <div class="show_r_title">
                     <!--<span>菠菜280g</span>-->
+                    <?php echo '<span>' . $proEachData['goodname'] . '</span>' ?>
                 </div>
                 <div class="show_r_price">
                     <span>价格</span>
-                    <span class="show_r_price_num">￥3.50</span>
+                    <?php echo '<span class="show_r_price_num">' . $proEachData['oldprice'] . '</span>' ?>
                 </div>
                 <div class="show_r_collect">
                     <span>评论：0条</span>
@@ -102,7 +116,7 @@
             <div class="buy_detail_con">
                 <ul class="con_list">
                     <li class="detailShow selected">
-                        <!--<img src="common/img/buy_detail1.png" alt=""/>-->
+                        <?php echo '<img src="upfiles/' . $proEachData['detailimg'] . '" alt=""/>' ?>
                     </li>
                     <li class="comment">
                         <div class="from_group">
@@ -157,7 +171,7 @@
 </div>
 <!-- 购买模块 结束-->
 <!-- footer 开始-->
-<?php require "footer.php"?>
+<?php require "footer.php" ?>
 <!-- footer 结束-->
 
 <script src="common/js/jquery-1.7.2.js"></script>

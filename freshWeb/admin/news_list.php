@@ -8,7 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="common/layui/css/layui.css"  media="all">
-
+    <style>
+    </style>
 </head>
 <body>
 
@@ -22,10 +23,10 @@
         <thead>
         <tr>
             <th>ID</th>
-            <th>资讯标题</th>
-            <th>发表时间</th>
+            <th width="300">资讯标题</th>
+            <th width="200">发表时间</th>
             <th>资讯内容</th>
-            <th width="400">操作</th>
+            <th width="200">操作</th>
         </tr>
         </thead>
         <tbody>

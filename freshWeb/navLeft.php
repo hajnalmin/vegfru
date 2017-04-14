@@ -1,10 +1,11 @@
+
 <div class="sidebar">
     <!-- 产品分类开始-->
     <ul class="classify">
         <li class="s_title"><a href="javascript:;">产品分类</a></li>
-        <li class="s_line"><span id="self_list">国产水果</span></li>
-        <li class="s_line"><span id="import_list">进口水果</span></li>
-        <li><span id="truck_list">新鲜时蔬</span></li>
+        <li class="s_line"><span id="self_list"><a href="hotSale.php?proCate=1">国产水果</a></span></li>
+        <li class="s_line"><span id="import_list"><a href="hotSale.php?proCate=2">进口水果</a></span></li>
+        <li><span id="truck_list"><a href="hotSale.php?proCate=3">新鲜时蔬</a></span></li>
     </ul>
     <!-- 产品分类结束-->
     <!-- 在线客服开始-->

@@ -253,13 +253,23 @@ body{
     text-align: center;
 }
 
+
 .conR_pages span {
     cursor: pointer;
     color: #161616;
-    margin-left: 25px;
+    margin-left: 20px;
+}
+.conR_pages a{
+    width: 30px;
+    height: 30px;
+    border: 1px solid #b7adad;
+    display: inline-block;
+    text-align: center;
+    line-height: 30px;
 }
 .conR_pages .on{
-    color: #4ab344;
+    background: #4ab344;
+    color: #fff9ec;
 }
 
 /*页码样式结束*/
