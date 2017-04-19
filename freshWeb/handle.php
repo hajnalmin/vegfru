@@ -1,5 +1,6 @@
 <?php
 require "utils/DBConfig.php";
+require "upload.php";
 
 if(isset($_POST["method"])){
     $method = $_POST["method"];
@@ -32,8 +33,6 @@ function login($db){
         "upwd"=>$_POST['upwd']
     ]);
 
-
-
     session_start();
     if(isset($arr)){
 
@@ -47,6 +46,32 @@ function login($db){
     }
 }
 
+
+function proComment($db){
+
+    $comimg = $_FILES['comimg'];
+    $comimgsize = $_FILES['comimg']['size'];
+    $comimgname = $_FILES['comimg']['name'];
+    $comimgtype = $_FILES['comimg']['type'];
+
+
+    $comimgTep = upload($comimg,$comimgsize, $comimgname, $comimgtype);
+
+
+    $row = $db->insert('comments',[
+        "comname"=>$_POST['comname'],
+        "comcon"=>$_POST['comcon'],
+        "comimg"=>$comimgTep,
+        "goodid"=>$_POST['goodid']
+    ]);
+
+    if($row > 0){
+        print_r("添加成功");
+    }else{
+        print_r("添加失败");
+    }
+
+}
 
 function nav($method){
     $db = DBConfig::createDBConfig();

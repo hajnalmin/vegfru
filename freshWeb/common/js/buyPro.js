@@ -5,15 +5,15 @@ $(function(){
     //定义json数据
     var main = {
         init:function(){
-            this.shareAndStart();//分享和产品评星
+            this.share();//分享
             this.getCode();//获取四位验证码
             this.proAdd();//产品数量的增加和减少
         },
 
 
-        //分享和产品评星
-        shareAndStart:function(){
-            //分享
+        //分享
+        share:function(){
+
             $('.show_collect span').eq(1).children("i").mouseover(function(){
                 $(".show_share").show();
                 $(this).parent().addClass('span_hover');
@@ -21,19 +21,6 @@ $(function(){
                 $(".show_share").hide();
                 $(this).parent().removeClass('span_hover');
             });
-            //产品评星
-            //1. 给所有的li注册mouseenter事件
-            var start = $(".start i");
-            start.click(function () {
-                $(this).addClass('s2').prevAll().addClass('s2');
-                $(this).addClass('s1');
-            }).mouseleave(function () {
-                $(this).children().addClass('s1');
-                $("i.current").addClass('s2').prevAll().addClass('s2');
-            });
-            start.click(function () {
-                $(this).addClass("current").siblings().removeClass("current")
-            })
 
         },
         //购买物品数量的增加和减少

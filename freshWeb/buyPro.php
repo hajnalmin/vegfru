@@ -2,10 +2,17 @@
 require_once "utils/DBConfig.php";
 $db = DBConfig::createDBConfig();
 $id = isset($_GET['id']) ? $_GET['id'] : 1;
+
+$sum = $db->queryBySQL('select count(0) from goods')[0]['count(0)'];
+
 $arr = $db->queryByVal('goods', [
     "id" => $id
 ]);
 $proEachData = $arr[0];
+
+
+
+
 
 ?>
 
@@ -75,9 +82,8 @@ $proEachData = $arr[0];
                     </div>
                 </div>
                 <div class="show_btn clearFix">
-                    <!--                    <span class="show_l_prev">上一个</span>-->
-                    <?php echo '<span class="show_l_prev"><a href="buyPro.php?id=' . ($id - 1) . '">上一个</a></span>' ?>
-                    <?php echo '<span class="show_l_next"><a href="buyPro.php?id=' . ($proEachData['id'] === 11 ? 'return false' : $proEachData['id'] + 1) . '">下一个</a></span>' ?>
+                    <?php echo '<span class="show_l_prev"><a href="buyPro.php?id=' . ($proEachData['id'] == 1 ? 1 : $proEachData['id'] - 1) . '">上一个</a></span>' ?>
+                    <?php echo '<span class="show_l_next"><a href="buyPro.php?id=' . ($proEachData['id'] == $sum ? $sum : $proEachData['id'] + 1) . '">下一个</a></span>' ?>
                 </div>
             </div>
             <div class="show_r">
@@ -119,38 +125,32 @@ $proEachData = $arr[0];
                         <?php echo '<img src="upfiles/' . $proEachData['detailimg'] . '" alt=""/>' ?>
                     </li>
                     <li class="comment">
-                        <div class="from_group">
-                            <span class="form_left">产品评星：</span>
-                            <span class="form_right start">
-                                <i class="icon2 s1"></i>
-                                <i class="icon2 s1"></i>
-                                <i class="icon2 s1"></i>
-                                <i class="icon2 s1"></i>
-                                <i class="icon2 s1"></i>
-                            </span>
-                        </div>
-                        <div class="from_group">
-                            <span class="form_left">昵称：</span>
-                            <input type="text" class="form_right nickname"/>
-                        </div>
-                        <div class="from_group">
-                            <span class="form_left">评论内容：</span>
-                            <textarea class="form_right right_comment"></textarea>
-                        </div>
-                        <div class="from_group">
-                            <span class="form_left">验证码：</span>
-                            <input type="text" class="form_right code_write"/>
-                            <span class="show_code">AF7e</span>
-                        </div>
-                        <div class="from_group uploadPic">
-                            <span class="form_left">上传图片：</span>
-                            <input type="file" class="upload">
-                            <label>+</label>
-                            <span class="upload_detail">（可上传 5 张图片,每张不超过5M，支持格式jpg，jpeg，bmp，png，gif）</span>
-                        </div>
-                        <div class="comment_btn">
-                            <button>提交评论</button>
-                        </div>
+                        <form action="handle.php" method="post" enctype="multipart/form-data">
+                            <input type="hidden" name="method" readonly value="proComment">
+                            <input type="hidden" name="goodid" readonly value="<?php echo $proEachData['id']?>">
+                            <div class="from_group">
+                                <span class="form_left">昵称：</span>
+                                <input type="text" class="form_right nickname" name="comname"/>
+                            </div>
+                            <div class="from_group">
+                                <span class="form_left">评论内容：</span>
+                                <textarea class="form_right right_comment" name="comcon"></textarea>
+                            </div>
+                            <div class="from_group">
+                                <span class="form_left">验证码：</span>
+                                <input type="text" class="form_right code_write"/>
+                                <span class="show_code">AF7e</span>
+                            </div>
+                            <div class="from_group uploadPic">
+                                <span class="form_left">上传图片：</span>
+                                <input type="file" class="upload" name="comimg">
+                                <label>+</label>
+                                <span class="upload_detail">（可上传 5 张图片,每张不超过5M，支持格式jpg，jpeg，bmp，png，gif）</span>
+                            </div>
+                            <div class="comment_btn">
+                                <button type="submit">提交评论</button>
+                            </div>
+                        </form>
                     </li>
                     <li class="logs">
                         <div class="logs_title">

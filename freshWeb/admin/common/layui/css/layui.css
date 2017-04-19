@@ -894,7 +894,7 @@ a cite {
     color: #777;
     cursor: pointer;
     /*-webkit-transition: border-radius 2px;
-    border-color: .3s cubic-bezier(.65, .05, .35, .5);*/
+    border-color: .3s cubic-bezier(.65, .05Angular-progress-loadingImg, .35, .5);*/
     transition: border-color .3s cubic-bezier(.65, .05, .35, .5);
 }
 

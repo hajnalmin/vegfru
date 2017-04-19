@@ -538,6 +538,27 @@ $(function(){
 							"childMenus": ""
 						}
 					]
+				},
+				{
+					"id": "9",
+					"name": "商品评论",
+					"parentId": "2",
+					"url": "",
+					"icon": "",
+					"order": "1",
+					"isHeader": "0",
+					"childMenus": [
+						{
+							"id": "19",
+							"name": "商品评论列表",
+							"parentId": "8",
+							"url": "proComment_list.php",
+							"icon": "",
+							"order": "1",
+							"isHeader": "0",
+							"childMenus": ""
+						}
+					]
 				}
 			]
 		},
@@ -551,7 +572,7 @@ $(function(){
 			"isHeader": "1",
 			"childMenus": [
 				{
-					"id": "9",
+					"id": "10",
 					"name": "资讯信息",
 					"parentId": "3",
 					"url": "",
@@ -560,9 +581,9 @@ $(function(){
 					"isHeader": "0",
 					"childMenus": [
 						{
-							"id": "19",
+							"id": "20",
 							"name": "新增资讯信息",
-							"parentId": "9",
+							"parentId": "10",
 							"url": "news_add.php",
 							"icon": "",
 							"order": "1",
@@ -570,9 +591,9 @@ $(function(){
 							"childMenus": ""
 						},
 						{
-							"id": "20",
+							"id": "21",
 							"name": "资讯信息列表",
-							"parentId": "9",
+							"parentId": "10",
 							"url": "news_list.php",
 							"icon": "",
 							"order": "2",
@@ -593,7 +614,7 @@ $(function(){
 			"isHeader": "1",
 			"childMenus": [
 				{
-					"id": "10",
+					"id": "11",
 					"name": "订单信息",
 					"parentId": "4",
 					"url": "",
@@ -602,7 +623,7 @@ $(function(){
 					"isHeader": "0",
 					"childMenus": [
 						{
-							"id": "21",
+							"id": "22",
 							"name": "订单信息列表",
 							"parentId": "4",
 							"url": "order_list.php",

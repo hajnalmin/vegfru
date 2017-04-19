@@ -50,7 +50,7 @@ function adminAdd($db){
            'atel'=>$_POST["admintel"]
         ]);
     if($row > 0){
-        print_r("注册成功");
+        header('location:admin_list.php');
     }else{
         print_r("注册失败");
     }
@@ -65,7 +65,7 @@ function adminDel($db){
         'id'=>$_GET["id"]
     ]);
     if($row > 0){
-        print_r("删除成功");
+        header('location:admin_list.php');
     }else{
         print_r("删除失败");
     }
@@ -87,7 +87,7 @@ function adminUpdate($db){
     ]);
 
     if($row > 0){
-        print_r("修改成功");
+        header('location:admin_list.php');
     }else{
         print_r("修改失败");
     }
@@ -117,7 +117,7 @@ function proCateDel($db){
         'id'=>$_GET["id"]
     ]);
     if($row > 0){
-        print_r("删除成功");
+        header('location:proCate_list.php');
     }else{
         print_r("删除失败");
     }
@@ -153,8 +153,7 @@ function proInfoAdd($db){
     ]);
 
     if($row > 0){
-        print_r("添加成功");
-        header('location:proInfo_add.php');
+        header('location:proInfo_list.php');
     }else{
         print_r("添加失败");
     }
@@ -170,7 +169,8 @@ function proDel($db){
         'id'=>$_GET["id"]
     ]);
     if($row > 0){
-        print_r("删除成功");
+        header('location:proInfo_list.php');
+
     }else{
         print_r("删除失败");
     }
@@ -188,7 +188,7 @@ function newAdd($db){
         'news'=>$_POST["newcon"]
     ]);
     if($row > 0){
-        print_r("添加成功");
+        header('location:news_list.php');
     }else{
         print_r("添加失败");
     }
@@ -203,12 +203,29 @@ function newDel($db){
         'id'=>$_GET["id"]
     ]);
     if($row > 0){
-        print_r("删除成功");
+        header('location:news_list.php');
     }else{
         print_r("删除失败");
     }
-
 }
+
+
+/**
+ * 删除一条评论信息
+ * @param $db
+ */
+function proComDel($db){
+    $row = $db->delete('comments',[
+        'id'=>$_GET["id"]
+    ]);
+    if($row > 0){
+        header('location:proComment_list.php');
+    }else{
+        print_r("删除失败");
+    }
+}
+
+
 
 //执行函数
 nav($method);
