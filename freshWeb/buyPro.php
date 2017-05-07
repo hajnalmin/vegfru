@@ -8,10 +8,8 @@ $sum = $db->queryBySQL('select count(0) from goods')[0]['count(0)'];
 $arr = $db->queryByVal('goods', [
     "id" => $id
 ]);
+
 $proEachData = $arr[0];
-
-
-
 
 
 ?>
@@ -106,7 +104,9 @@ $proEachData = $arr[0];
                     <i class="arrow" id="down"></i>
                 </div>
                 <div class="show_r_handel">
-                    <span class="addCart"><a href="myCart.php"><i class="icon"></i>加入购物车</a></span>
+                    <span class="addCart">
+                        <?php echo "<a href='handle.php?method=addCart&id=".$id."'>";?>
+                        <i class="icon"></i>加入购物车</a></span>
                     <span class="buyNow"><a href="myCart.php">立即购买</a></span>
                 </div>
             </div>

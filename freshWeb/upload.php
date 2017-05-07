@@ -1,7 +1,7 @@
 <?php
 require_once "utils/DBConfig.php";
 
-//1.定义一个常量UPLOAD_PATH，它的内容为网站的路径D:/study/xmapp/htdocs/month4/week2/03zhmKJ/php-upload-img/uploads
+//1.定义一个常量UPLOAD_PATH，它的内容为网站的路径D:/study/xmapp/htdocs/month4/week2/03zhmKJ/phpCart-upload-img/uploads
 define('UPLOAD_PATH', dirname(__FILE__) . "/upfiles/");
 
 //2.上传图片函数

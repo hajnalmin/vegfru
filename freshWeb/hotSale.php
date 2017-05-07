@@ -1,6 +1,9 @@
 <?php
-require_once 'utils/DBConfig.php';
+require "utils/DBConfig.php";
+
+
 ?>
+
 
 <!DOCTYPE html>
 <html>

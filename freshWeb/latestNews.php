@@ -1,4 +1,7 @@
-<?php require_once "utils/DBConfig.php"?>
+<?php
+require "utils/DBConfig.php";
+?>
+
 <!DOCTYPE html>
 <html>
 <head lang="en">

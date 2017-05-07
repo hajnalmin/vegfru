@@ -53,11 +53,7 @@ function proComment($db){
     $comimgsize = $_FILES['comimg']['size'];
     $comimgname = $_FILES['comimg']['name'];
     $comimgtype = $_FILES['comimg']['type'];
-
-
     $comimgTep = upload($comimg,$comimgsize, $comimgname, $comimgtype);
-
-
     $row = $db->insert('comments',[
         "comname"=>$_POST['comname'],
         "comcon"=>$_POST['comcon'],
@@ -66,12 +62,102 @@ function proComment($db){
     ]);
 
     if($row > 0){
-        print_r("添加成功");
+        echo "<script>alert('添加成功!')</script>";
+        header("location:buyPro.php?id=".$_POST['goodid']);
     }else{
         print_r("添加失败");
     }
+}
+
+function addCart($db){
+    $arr = $db->queryByVal('goods',[
+        "id"=>$_GET['id']
+    ]);
+
+
+    $arr2 = $db->insert('cart',[
+        "goodname"=>$arr[0]['goodname'],
+        "goodimg"=>$arr[0]['goodimg'],
+        "price"=>$arr[0]['oldprice'],
+        "count"=>1,
+        "goodid"=>$arr[0]['id'],
+    ]);
+    if(isset($arr2)){
+        header('location:myCart.php');
+    }else{
+        session_start();
+        $_SESSION['msg'] = "添加购物车失败，请重新添加";
+    }
+}
+
+function delCart($db){
+
+    $row = $db->delete('cart',[
+        'id'=>$_GET["id"]
+    ]);
+    if($row > 0){
+        header('location:myCart.php');
+    }else{
+        print_r("删除失败");
+    }
 
 }
+
+function addCount($db){
+
+    $arr = $db->queryByVal('cart',[
+        "id"=>$_GET['id']
+    ]);
+    $count = $arr[0]['count'];
+
+    if($count>0){
+        $row = $db->update('cart',[
+            "count"=>($count+1)
+        ],[
+            'id'=>$_GET['id']
+        ]);
+        if($row > 0){
+            header('location:myCart.php');
+        }
+    }else{
+        echo "数量为0";
+    }
+    $row = $db->update('cart',[
+        "count"=>($count+1)
+    ],[
+        'id'=>$_GET['id']
+    ]);
+
+    if($row > 0){
+        header('location:myCart.php');
+    }else{
+        print_r("增加成功");
+    }
+}
+
+function redCount($db){
+
+    $arr = $db->queryByVal('cart',[
+        "id"=>$_GET['id']
+    ]);
+    $count = $arr[0]['count'];
+
+    if($count>0){
+        $row = $db->update('cart',[
+            "count"=>($count-1)
+        ],[
+            'id'=>$_GET['id']
+        ]);
+        if($row > 0){
+            header('location:myCart.php');
+        }
+    }else{
+        echo "数量为0";
+    }
+
+}
+
+
 
 function nav($method){
     $db = DBConfig::createDBConfig();

@@ -1,13 +1,5 @@
 <?php
 require "utils/DBConfig.php";
-session_start();
-
-if (isset($_SESSION['ualias'])) {
-    $ualias = $_SESSION['ualias'];
-} else {
-    header('location:login.php');
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -57,78 +49,32 @@ if (isset($_SESSION['ualias'])) {
                 <img src="common/img/list4.jpg" alt=""/>
             </div>
             <div class="con_right">
-                <div class="box">
+
+                <?php
+                $db = DBConfig::createDBConfig();
+                $sql = "SELECT * FROM `goods`  where goodcateid = 2 LIMIT 6";
+                $arr = $db->queryBySQL($sql);
+
+                foreach ($arr as $i) {
+                    echo '<div class="box">';
+                    echo "<img src='upfiles/" . $i['goodimg'] . "'>";
+                    echo '<p class="box_title"><a href="#">'.$i['goodname'].'</a></p>';
+                    echo '<p class="box_price">';
+                    echo '<span>￥</span><span>'.$i['oldprice'].'</span><span>￥0.00</span></p>';
+                    echo '<p class="buy"><a href="buyPro.php?id='.$i['id'].'">购买</a></p></div>';
+                }
+                ?>
+
+
+               <!-- <div class="box">
                     <img src="common/img/pic1.jpg" alt=""/>
-
                     <p class="box_title"><a href="#">南非进口黄柠檬 6个装</a></p>
-
                     <p class="box_price">
                         <span>￥</span><span>29.00</span>
                         <span>￥0.00</span>
                     </p>
-
                     <p class="buy"><a href="buyPro.php">购买</a></p>
-                </div>
-                <div class="box">
-                    <img src="common/img/pic2.jpg" alt=""/>
-
-                    <p class="box_title"><a href="#">智利进口新鲜蓝莓 4盒</a></p>
-
-                    <p class="box_price">
-                        <span>￥</span><span>99.00</span>
-                        <span>￥0.00</span>
-                    </p>
-
-                    <p class="buy"><a href="buyPro.php">购买</a></p>
-                </div>
-                <div class="box">
-                    <img src="common/img/pic3.jpg" alt=""/>
-
-                    <p class="box_title"><a href="#">美国进口红啤梨 6个</a></p>
-
-                    <p class="box_price">
-                        <span>￥</span><span>48.00</span>
-                        <span>￥0.00</span>
-                    </p>
-
-                    <p class="buy"><a href="buyPro.php">购买</a></p>
-                </div>
-                <div class="box">
-                    <img src="common/img/pic4.jpg" alt=""/>
-
-                    <p class="box_title"><a href="#">美国进口无籽红提 1kg</a></p>
-
-                    <p class="box_price">
-                        <span>￥</span><span>39.00</span>
-                        <span>￥0.00</span>
-                    </p>
-
-                    <p class="buy"><a href="buyPro.php">购买</a></p>
-                </div>
-                <div class="box">
-                    <img src="common/img/pic5.jpg" alt=""/>
-
-                    <p class="box_title"><a href="#">国产绿奇异果 16颗</a></p>
-
-                    <p class="box_price">
-                        <span>￥</span><span>48.00</span>
-                        <span>￥0.00</span>
-                    </p>
-
-                    <p class="buy"><a href="buyPro.php">购买</a></p>
-                </div>
-                <div class="box">
-                    <img src="common/img/pic6.jpg" alt=""/>
-
-                    <p class="box_title"><a href="#">浙江涌泉蜜桔无核桔子5斤</a></p>
-
-                    <p class="box_price">
-                        <span>￥</span><span>39.00</span>
-                        <span>￥0.00</span>
-                    </p>
-
-                    <p class="buy"><a href="buyPro.php">购买</a></p>
-                </div>
+                </div>-->
 
             </div>
         </div>

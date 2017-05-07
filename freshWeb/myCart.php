@@ -1,3 +1,4 @@
+<?php require "utils/DBConfig.php"?>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -36,9 +37,7 @@
             </div>
             <div id="content_box">
                 <div class="box_top">
-                    <div class="check_top">
-                        <input type="checkbox" id="all" />全选
-                    </div>
+                    <div class="check_top">序号</div>
                     <div class="pudc_top">商品</div>
                     <div class="pices_top">单价</div>
                     <div class="num_top">数量</div>
@@ -46,39 +45,40 @@
                     <div class="del_top">操作</div>
                 </div>
                 <div class="box_con">
-                    <div class="imfor">
-                        <div class="check">
-                            <input type="checkbox" class="Each" />
-                        </div>
-                        <div class="pudc"><img src="common/img/hot_list1.jpg" />菠菜280g</span>
+
+                    <!--<div class="imfor">
+                        <div class="check">1</div>
+                        <div class="pudc">
+                            <img src="common/img/hot_list1.jpg" />菠菜280g</span>
                         </div>
                         <div class="pices">3.50</div>
                         <div class="num"><span class="reduc">&nbsp;-&nbsp;</span><input type="text" value="1" /><span class="add">&nbsp;+</span></div>
                         <div class="totle">3.50</div>
                         <div class="del">删除</div>
                     </div>
-                    <div class="imfor">
-                        <div class="check">
-                            <input type="checkbox" class="Each" />
-                        </div>
-                        <div class="pudc"><img src="common/img/hot_list2.jpg" />进口香蕉超甜蕉</span>
-                        </div>
-                        <div class="pices">8.00</div>
-                        <div class="num"><span class="reduc">&nbsp;-&nbsp;</span><input type="text" value="1" /><span class="add">&nbsp;+</span></div>
-                        <div class="totle">8.00</div>
-                        <div class="del">删除</div>
-                    </div>
-                    <div class="imfor">
-                        <div class="check">
-                            <input type="checkbox" class="Each" />
-                        </div>
-                        <div class="pudc"><img src="common/img/hot_list3.jpg" />菲律宾进口菠萝凤梨 2个</span>
-                        </div>
-                        <div class="pices">38.00</div>
-                        <div class="num"><span class="reduc">&nbsp;-&nbsp;</span><input type="text" value="1" /><span class="add">&nbsp;+</span></div>
-                        <div class="totle">38.00</div>
-                        <div class="del">删除</div>
-                    </div>
+                    -->
+
+
+
+                    <?php
+                    $db = DBConfig::createDBConfig();
+                    $sql = "SELECT * FROM `cart` ";
+                    $arr = $db->queryBySQL($sql);
+
+                    foreach ($arr as $i) {
+                        echo '<div class="imfor"><div class="check">'.$i['id'].'</div>';
+                        echo '<div class="pudc">';
+                        echo "<img src='upfiles/" . $i['goodimg'] . "'>";
+                        echo '<span>'.$i['goodname'].'</span></div>';
+                        echo '<div class="pices">'.$i['price'].'</div>';
+                        echo '<div class="num"><span class="reduc"><a href="handle.php?method=redCount&id='.$i['id'].'">&nbsp;-&nbsp;</a></span>';
+                        echo '<input type="text" value="'.$i['count'].'"/><span class="add"><a href="handle.php?method=addCount&id='.$i['id'].'">&nbsp;+</a></span></div>';
+                        echo '<div class="totle">'.($i['price']*$i['count']).'</div>';
+                        echo '<div class="del"><a href="handle.php?method=delCart&id='.$i['id'].'">删除</a></div></div>';
+                    }
+                    ?>
+
+
                 </div>
             </div>
             <div class="foot">

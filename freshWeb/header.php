@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+if (isset($_SESSION['ualias'])) {
+$ualias = $_SESSION['ualias'];
+} else {
+header('location:login.phpCart');
+}
+?>
+
 <!-- 头部 开始-->
 <div class="top">
     <div class="wrap clearFix">
@@ -8,11 +18,11 @@
                 echo "<span>当前用户：</span>";
                 echo $ualias;
                 echo '</div><div class="topCart">';
-                echo '<span><a href="login.php" style="color: blue;">[ 退出 ]</a></span></div>';
+                echo '<span><a href="login.phpCart" style="color: blue;">[ 退出 ]</a></span></div>';
             }else{
                 echo "<span>当前身份：游客</span>";
                 echo '</div><div class="topCart">';
-                echo '<span><a href="login.php" style="color: red;">登录</a> | <a href="reg.php" style="color: red;">注册</a></span></div>';
+                echo '<span><a href="login.phpCart" style="color: red;">登录</a> | <a href="reg.phpCart" style="color: red;">注册</a></span></div>';
             }
         ?>
     </div>

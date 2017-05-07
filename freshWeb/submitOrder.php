@@ -1,3 +1,4 @@
+<?php require "utils/DBConfig.php"?>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -99,29 +100,44 @@
             <div class="buy_list">
                 <table>
                     <tr>
+                        <td>序号</td>
                         <td>名称</td>
                         <td>价格</td>
                         <td>数量</td>
                         <td>小计</td>
                     </tr>
-                    <tr>
+                    <!--<tr>
+                        <td>1</td>
                         <td>菠菜</td>
                         <td>￥3.50</td>
                         <td>1</td>
                         <td>￥3.50</td>
-                    </tr>
-                    <tr>
-                        <td>进口香蕉超甜蕉</td>
-                        <td>￥8.00</td>
-                        <td>1</td>
-                        <td>￥8.00</td>
-                    </tr>
-                    <tr>
-                        <td>菲律宾进口菠萝凤梨 2个</td>
-                        <td>￥38.00</td>
-                        <td>1</td>
-                        <td>￥38.00</td>
-                    </tr>
+                    </tr>-->
+                    <?php
+                    $db = DBConfig::createDBConfig();
+                    $sql = "SELECT * FROM `cart` ";
+                    $arr = $db->queryBySQL($sql);
+                    $sum = 0;
+
+                    foreach ($arr as $i) {
+                        echo '<tr><td>'.$i['id'].'</td>';
+                        echo '<td>'.$i['goodname'].'</td>';
+                        echo '<td>￥'.$i['price'].'</td>';
+                        echo '<td>'.$i['count'].'</td>';
+                        echo '<td>'.($i['price']*$i['count']).'</td>';
+                        echo '</tr>';
+                        $sum +=$i['price']*$i['count'];
+                    }
+
+
+                    $_SESSION['sum'] = $sum;
+
+                    ?>
+
+
+
+
+
                 </table>
             </div>
             <div class="form_title">
@@ -135,7 +151,7 @@
             <div class="confirm_order">
                 <div>
                     <span>总计：</span>
-                    <span>￥49.50</span>
+                    <?php echo "<span>￥". $_SESSION['sum']."</span>"?>
                 </div>
                 <div>
                     <span>已节省：</span>
@@ -143,7 +159,7 @@
                 </div>
                 <div>
                     <span class="bs">应支付金额：</span>
-                    <span>￥49.50</span>
+                    <?php echo "<span>￥". $_SESSION['sum']."</span>"?>
                 </div>
                 <div>
                     <button class="btn">提交订单</button>
