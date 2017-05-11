@@ -102,7 +102,7 @@ $(function () {
             $('.form_group button').click(function () {
                 //使用正则进行验证
 
-                //姓名2-5位中文
+                /*//姓名2-5位中文
                 if (!/[\u4e00-\u9fa5]/g.test(uname.val())) {
                     alert("请填写正确的姓名,2到5位中文！");
                     return false;
@@ -128,10 +128,11 @@ $(function () {
                 if (!buyType.val()){
                     alert("请选择购买方式！");
                     return false;
-                }
+                }*/
 
-                alert("提交成功！");
-                $('.form_group input,.form_group textarea').val("");
+                $('.form_group .username').val("");
+                $('.form_group .userTel').val("");
+                $('.form_group .con').val("");
             })
         },
 

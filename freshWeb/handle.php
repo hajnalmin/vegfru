@@ -35,15 +35,24 @@ function login($db){
 
     session_start();
     if(isset($arr)){
-
         $_SESSION['ualias'] = $arr[0]['ualias'];
-
         header("location:index.php");
 
     }else{
         $_SESSION['msg'] = "账号或密码不正确，请重新输入";
         header("location:login.php");
     }
+}
+
+function logout(){
+    session_start();
+
+    if(isset($_SESSION['ualias']))
+    {
+        $_SESSION['ualias'] = null;
+        header("location:login.php");
+    }
+
 }
 
 
@@ -155,6 +164,24 @@ function redCount($db){
         echo "数量为0";
     }
 
+}
+
+function addLeaveWord($db){
+    $arr = $db->insert('leaveword',[
+        "nowuser"=>$_POST['nowuser'],
+        "realname"=>$_POST['realname'],
+        "realtel"=>$_POST['realtel'],
+        "contactdate"=>$_POST['contactdate'],
+        "content"=>$_POST['content'],
+    ]);
+    session_start();
+    if(isset($arr)){
+        header('location:joinUs.php');
+        $_SESSION['info'] = "留言成功";
+    }else{
+        session_start();
+        $_SESSION['info'] = "留言失败";
+    }
 }
 
 

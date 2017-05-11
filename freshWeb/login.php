@@ -13,7 +13,7 @@
 <?php require "header.php"?>
 <!-- 头部 结束-->
 <!-- banner 结束-->
-<div class="banner"></div>
+<!--<div class="banner"></div>-->
 <!-- banner 结束-->
 <!--用户登录开始-->
 <div class="login">

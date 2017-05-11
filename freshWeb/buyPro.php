@@ -11,7 +11,6 @@ $arr = $db->queryByVal('goods', [
 
 $proEachData = $arr[0];
 
-
 ?>
 
 <!DOCTYPE html>

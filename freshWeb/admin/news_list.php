@@ -19,14 +19,14 @@
         <legend>资讯列表</legend>
     </fieldset>
 
-    <table class="layui-table  lay-even"  lay-skin="row" style="text-align: left">
+    <table class="layui-table  lay-even"  lay-skin="row" style="text-align: center;table-layout: fixed;width:1100px">
         <thead>
         <tr>
-            <th>ID</th>
-            <th width="300">资讯标题</th>
+            <th width="100">ID</th>
+            <th width="250">资讯标题</th>
             <th width="200">发表时间</th>
             <th>资讯内容</th>
-            <th width="200">操作</th>
+            <th width="100">操作</th>
         </tr>
         </thead>
         <tbody>
@@ -41,7 +41,7 @@
             echo "<td>" . $i['id'] . "</td>";
             echo "<td>" . $i['newtitle'] . "</td>";
             echo "<td>" . $i['newdate'] . "</td>";
-            echo "<td>" . $i['news'] . "</td>";
+            echo '<td style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden;">' . $i['news'] . "</td>";
             echo '<td><a href="admin_handle.php?method=newDel&id='.$i['id'].'" class="layui-btn layui-btn-danger layui-btn-mini"></i>删除</a></td>';
             echo "</tr>";
 

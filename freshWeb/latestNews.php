@@ -100,13 +100,6 @@ require "utils/DBConfig.php";
 
 
             </div>
-            <div class="conR_pages">
-                <span>上一页</span>
-                <span>1</span>
-                <span>2</span>
-                <span>3</span>
-                <span>下一页</span>
-            </div>
 
         </div>
 
