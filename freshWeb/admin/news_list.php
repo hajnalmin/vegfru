@@ -35,16 +35,16 @@
         $db = DBConfig::createDBConfig();
         $sql = "SELECT * FROM `news`";
         $arr = $db->queryBySQL($sql);
-
+        $index = 1;
         foreach ($arr as $i) {
             echo "<tr>";
-            echo "<td>" . $i['id'] . "</td>";
+            echo "<td>" .  $index . "</td>";
             echo "<td>" . $i['newtitle'] . "</td>";
             echo "<td>" . $i['newdate'] . "</td>";
             echo '<td style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden;">' . $i['news'] . "</td>";
             echo '<td><a href="admin_handle.php?method=newDel&id='.$i['id'].'" class="layui-btn layui-btn-danger layui-btn-mini"></i>删除</a></td>';
             echo "</tr>";
-
+            $index++;
         }
         ?>
         </tbody>

@@ -47,10 +47,9 @@ $page = isset($_GET['page']) ? $_GET['page'] : 1;
         $count = $db->queryPageCount('SELECT COUNT(0) FROM goods');
         $countPage = ceil($count / $size);
 
-
         foreach ($arr as $i) {
             echo "<tr>";
-            echo "<td>" . $i['id'] . "</td>";
+            echo "<td>" .  $i['id']. "</td>";
             echo "<td>" . $i['goodname'] . "</td>";
             echo "<td><img src='../upfiles/" . $i['goodimg'] . "' width='50' height='50'></td>";
 

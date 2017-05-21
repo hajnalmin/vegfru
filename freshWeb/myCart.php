@@ -64,9 +64,10 @@
                     $db = DBConfig::createDBConfig();
                     $sql = "SELECT * FROM `cart` ";
                     $arr = $db->queryBySQL($sql);
+                    $index = 1;
 
                     foreach ($arr as $i) {
-                        echo '<div class="imfor"><div class="check">'.$i['id'].'</div>';
+                        echo '<div class="imfor"><div class="check">'.$index.'</div>';
                         echo '<div class="pudc">';
                         echo "<img src='upfiles/" . $i['goodimg'] . "'>";
                         echo '<span>'.$i['goodname'].'</span></div>';
@@ -75,7 +76,9 @@
                         echo '<input type="text" value="'.$i['count'].'"/><span class="add"><a href="handle.php?method=addCount&id='.$i['id'].'">&nbsp;+</a></span></div>';
                         echo '<div class="totle">'.($i['price']*$i['count']).'</div>';
                         echo '<div class="del"><a href="handle.php?method=delCart&id='.$i['id'].'">删除</a></div></div>';
+                        $index++;
                     }
+
                     ?>
 
 

@@ -37,134 +37,32 @@
             <div class="form_title">
                 <span>收货人信息</span>
             </div>
-            <div class="order_info">
-                <div class="form_grounp">
-                    <span class="g_left">收货人姓名：</span>
-                    <input type="text" class="g_right username"/>
-                    <span class="red">*以字母开头,其余的是字母数字下划线均可，6-18位</span>
+            <form action="handle.php" method="post">
+                <input type="hidden" value="submitOrder" name="method">
+                <input type="hidden" value="<?php echo $ualias;?>" name="ualias">
+                <div class="order_info">
+                    <div class="form_grounp">
+                        <span class="g_left">收货人姓名：</span>
+                        <input type="text" class="g_right username" name="ordername"/>
+                        <span class="red">*请填写收货人姓名</span>
+                    </div>
+                    <div class="form_grounp">
+                        <span class="g_left">电话：</span>
+                        <input type="text" class="g_right tel" name="ordertel"/>
+                        <span class="red">*11位手机号码</span>
+                    </div>
+                    <div class="form_grounp">
+                        <span class="g_left">地址：</span>
+                        <input type="text" class="g_right address" name="orderaddress"/>
+                        <span class="red">*请认真填写,不能为空</span>
+                    </div>
                 </div>
-                <div class="form_grounp">
-                    <span class="g_left">邮箱：</span>
-                    <input type="text" class="g_right email"/>
-                    <span class="red">*邮箱不能以特殊字符_开头,以cn、com等结尾</span>
+                <div class="confirm_order">
+                    <div>
+                        <button class="btn" type="submit">提交订单</button>
+                    </div>
                 </div>
-                <div class="form_grounp">
-                    <span class="g_left">电话：</span>
-                    <input type="text" class="g_right tel"/>
-                    <span class="red">*11位手机号码</span>
-                </div>
-                <div class="form_grounp">
-                    <span class="g_left">邮政编码：</span>
-                    <input type="text" class="g_right postalcode"/>
-                    <span class="red">*6位数字</span>
-                </div>
-                <div class="form_grounp">
-                    <span class="g_left">地址：</span>
-                    <input type="text" class="g_right address"/>
-                    <span class="red">*请认真填写,不能为空</span>
-                </div>
-            </div>
-            <div class="form_title">
-                <span>配送方式</span>
-            </div>
-            <div class="dis_method">
-                <div class="form_grounp">
-                    <input type="radio" name="payWay" checked="checked"/>
-                    <span>平邮	费用：￥5.0</span>
-                </div>
-                <div class="form_grounp">
-                    <input type="radio" name="payWay"/>
-                    <span>快递	费用：￥10.0</span>
-                </div>
-                <div class="form_grounp">
-                    <input type="radio" name="payWay"/>
-                    <span>EMS	费用：￥100.0</span>
-                </div>
-            </div>
-            <div class="form_title">
-                <span>支付方式</span>
-            </div>
-            <div class="buy_method">
-                <div class="form_grounp">
-                    <input type="radio" name="payMethod" checked="checked"/>
-                    <span> 货到付款   您需要在收货时用现金等方式向送货员支付订单款项。</span>
-                </div>
-                <div class="form_grounp">
-                    <input type="radio" name="payMethod"/>
-                    <span>银行转账   您汇款时请务必在电汇单的用途栏内注明订单号。</span>
-                </div>
-            </div>
-            <div class="form_title">
-                <span>购物清单</span>
-            </div>
-            <div class="buy_list">
-                <table>
-                    <tr>
-                        <td>序号</td>
-                        <td>名称</td>
-                        <td>价格</td>
-                        <td>数量</td>
-                        <td>小计</td>
-                    </tr>
-                    <!--<tr>
-                        <td>1</td>
-                        <td>菠菜</td>
-                        <td>￥3.50</td>
-                        <td>1</td>
-                        <td>￥3.50</td>
-                    </tr>-->
-                    <?php
-                    $db = DBConfig::createDBConfig();
-                    $sql = "SELECT * FROM `cart` ";
-                    $arr = $db->queryBySQL($sql);
-                    $sum = 0;
-
-                    foreach ($arr as $i) {
-                        echo '<tr><td>'.$i['id'].'</td>';
-                        echo '<td>'.$i['goodname'].'</td>';
-                        echo '<td>￥'.$i['price'].'</td>';
-                        echo '<td>'.$i['count'].'</td>';
-                        echo '<td>'.($i['price']*$i['count']).'</td>';
-                        echo '</tr>';
-                        $sum +=$i['price']*$i['count'];
-                    }
-
-
-                    $_SESSION['sum'] = $sum;
-
-                    ?>
-
-
-
-
-
-                </table>
-            </div>
-            <div class="form_title">
-                <span>给卖家留言</span>
-            </div>
-            <div class="message clearFix">
-                <div class="form_grounp">
-                    <input type="text" class="g_right" placeholder="选填：对本次交易的说明（建议填写和卖家达成一致的说明）"/>
-                </div>
-            </div>
-            <div class="confirm_order">
-                <div>
-                    <span>总计：</span>
-                    <?php echo "<span>￥". $_SESSION['sum']."</span>"?>
-                </div>
-                <div>
-                    <span>已节省：</span>
-                    <span>￥0.00</span>
-                </div>
-                <div>
-                    <span class="bs">应支付金额：</span>
-                    <?php echo "<span>￥". $_SESSION['sum']."</span>"?>
-                </div>
-                <div>
-                    <button class="btn">提交订单</button>
-                </div>
-            </div>
+            </form>
         </div>
 
 
@@ -177,7 +75,7 @@
 
 <script src="common/js/jquery-1.7.2.js"></script>
 <script src="common/js/public.js"></script>
-<script src="common/js/mycart.js"></script>
+<!--<script src="common/js/mycart.js"></script>-->
 
 </body>
 </html>

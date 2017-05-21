@@ -184,6 +184,34 @@ function addLeaveWord($db){
     }
 }
 
+function submitOrder($db){
+
+    $arr = $db->insert('order',[
+        'id'=>2,
+        "ordername"=>$_POST['ordername'],
+        "ordertel"=>$_POST['ordertel'],
+        "orderaddress"=>$_POST['orderaddress'],
+        "ualias"=>$_POST['ualias']
+    ]);
+
+
+    echo $_POST['ordername'];
+    echo $_POST['ordertel'];
+    echo $_POST['orderaddress'];
+    echo $_POST['ualias'];
+    echo isset($arr);
+
+
+    /*if(isset($arr)){
+        header('location:myOrder.php');
+    }else{
+        session_start();
+        $_SESSION['msg'] = "订单失败，请重新选择";
+    }*/
+
+
+}
+
 
 
 function nav($method){

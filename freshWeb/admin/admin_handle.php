@@ -225,6 +225,21 @@ function proComDel($db){
     }
 }
 
+/**
+ * 删除一条订单信息
+ * @param $db
+ */
+function orderDel($db){
+    $row = $db->delete('order',[
+        'id'=>$_GET["id"]
+    ]);
+    if($row > 0){
+        header('location:order_list.php');
+
+    }else{
+        print_r("删除失败");
+    }
+}
 
 
 //执行函数

@@ -10,6 +10,11 @@ require "utils/DBConfig.php";
     <link rel="stylesheet" href="common/css/reset.css"/>
     <link rel="stylesheet" href="common/css/public.css"/>
     <link rel="stylesheet" href="common/css/content.css"/>
+    <style>
+        .con .con_right {
+            margin: 0 120px;
+        }
+    </style>
 </head>
 <body>
 
@@ -23,9 +28,6 @@ require "utils/DBConfig.php";
 <div class="container">
     <div class="wrap clearFix">
         <div class="con clearFix">
-            <!-- 左侧菜单 开始 -->
-            <?php require "navLeft.php" ?>
-            <!-- 左侧菜单 结束 -->
             <!-- 右侧内容 开始 -->
             <div class="con_right clearFix">
                 <div class="box_list">

@@ -40,16 +40,18 @@
         $db = DBConfig::createDBConfig();
         $sql = "SELECT * FROM `users`";
         $arr = $db->queryBySQL($sql);
+        $index = 1;
 
         foreach ($arr as $i) {
             echo "<tr>";
-            echo "<td>" . $i['id'] . "</td>";
+            echo "<td>" . $index  . "</td>";
             echo "<td>" . $i['ualias'] . "</td>";
             echo "<td>" . $i['uname'] . "</td>";
             echo "<td>" . $i['uemail'] . "</td>";
             echo "<td>" . $i['utel'] . "</td>";
             echo '<td><button onclick="confirm(\'delete.html?id=20\',\'确定要删除吗？\')" class="layui-btn layui-btn-danger layui-btn-mini"><i class="icon-trash"></i>删除</button></td>';
             echo "</tr>";
+            $index ++;
         }
         ?>
         </tbody>

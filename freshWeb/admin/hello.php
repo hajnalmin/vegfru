@@ -13,7 +13,7 @@
 
     <h1 style="font-size: 30px">管理员，你好</h1><br>
 
-    <h2 style="font-size: 24px">请选择左侧要操作的选项</h2>
+    <h2 style="font-size: 24px">欢迎登录果蔬后台管理系统</h2>
 
 
 </div>

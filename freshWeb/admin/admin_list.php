@@ -34,16 +34,17 @@
         $db = DBConfig::createDBConfig();
         $sql = "SELECT * FROM `admin`";
         $arr = $db->queryBySQL($sql);
+        $index = 1;
 
         foreach ($arr as $i) {
             echo "<tr>";
-            echo "<td>" . $i['id'] . "</td>";
+            echo "<td>" .  $index  . "</td>";
             echo "<td>" . $i['aname'] . "</td>";
             echo "<td>" . $i['aemail'] . "</td>";
             echo "<td>" . $i['atel'] . "</td>";
             echo '<td><a href="admin_handle.php?method=adminDel&id='.$i['id'].'" class="layui-btn layui-btn-danger layui-btn-mini"></i>删除</a></td>';
             echo "</tr>";
-
+            $index++;
         }
         ?>
         </tbody>

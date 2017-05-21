@@ -45,11 +45,11 @@ $page = isset($_GET['page']) ? $_GET['page'] : 1;
         //处理页码数
         $count = $db->queryPageCount('SELECT COUNT(0) FROM comments');
         $countPage = ceil($count / $size);
-
+        $index = 1;
 
         foreach ($arr as $i) {
             echo "<tr>";
-            echo "<td>" . $i['id'] . "</td>";
+            echo "<td>" .  $index . "</td>";
             foreach ($arr2 as $item) {
                 if ($item['id'] === $i['goodid']) {
                     echo '<td>' . $item['goodname'] . '</td>';
@@ -62,7 +62,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 1;
 
             echo '<td><a href="admin_handle.php?method=proComDel&id=' . $i['id'] . '" class="layui-btn layui-btn-danger layui-btn-mini"></i>删除</a></td>';
             echo "</tr>";
-
+            $index++;
         }
         ?>
         </tbody>

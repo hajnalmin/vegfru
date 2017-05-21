@@ -30,13 +30,15 @@
 
         $db = DBConfig::createDBConfig();
         $arr = $db->queryByVal('cate',[]);
+        $index = 1;
 
         foreach ($arr as $i) {
             echo "<tr>";
-            echo "<td>" . $i['id'] . "</td>";
+            echo "<td>" .  $index . "</td>";
             echo "<td>" . $i['catename'] . "</td>";
             echo '<td><a href="admin_handle.php?method=proCateDel&id='.$i['id'].'" class="layui-btn layui-btn-danger layui-btn-mini"></i>删除</a></td>';
             echo "</tr>";
+            $index++;
         }
         ?>
         </tbody>
