@@ -17,6 +17,18 @@
             width:150px;
             border-bottom:1px solid #EAEAEA;
         }
+        .buybtn{
+            background-color: #4ab344;
+            padding: 10px 30px;
+            cursor: pointer;
+            border-radius: 3px;
+            width: 60px;
+            margin: 10px 110px 20px 0;
+            float: right;
+        }
+        .buybtn a{
+            color:white;
+        }
     </style>
 </head>
 <body>
@@ -47,13 +59,11 @@
             <div class="rowData">
                 <span>订单编号</span><span>收货人姓名</span><span>收货人电话</span><span>收货人地址</span>
             </div>
-
             <?php
             $db = DBConfig::createDBConfig();
             $sql = "SELECT * FROM `order` ";
             $arr = $db->queryBySQL($sql);
             $index = 1;
-
             foreach ($arr as $i) {
                 echo '<div class="rowData"><span>'.$index.'</span>';
                 echo '<span>'.$i['ordername'].'</span>';
@@ -61,14 +71,13 @@
                 echo '<span>'.$i['orderaddress'].'</span></div>';
                 $index++;
             }
-
             ?>
-
-
-
+            <div>
+                <p class="buybtn">
+                    <a href="allProduct.php">继续购物</a>
+                </p>
+            </div>
         </div>
-
-
     </div>
 </div>
 <!-- 订单模块结束-->

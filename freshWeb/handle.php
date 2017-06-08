@@ -46,7 +46,6 @@ function login($db){
 
 function logout(){
     session_start();
-
     if(isset($_SESSION['ualias']))
     {
         $_SESSION['ualias'] = null;
@@ -151,7 +150,7 @@ function redCount($db){
     ]);
     $count = $arr[0]['count'];
 
-    if($count>0){
+    if($count>1){
         $row = $db->update('cart',[
             "count"=>($count-1)
         ],[
@@ -161,7 +160,8 @@ function redCount($db){
             header('location:myCart.php');
         }
     }else{
-        echo "数量为0";
+        echo "<script>alert('数量为0')</script>";
+        header('location:myCart.php');
     }
 
 }
@@ -187,7 +187,6 @@ function addLeaveWord($db){
 function submitOrder($db){
 
     $arr = $db->insert('order',[
-        'id'=>2,
         "ordername"=>$_POST['ordername'],
         "ordertel"=>$_POST['ordertel'],
         "orderaddress"=>$_POST['orderaddress'],
@@ -201,13 +200,12 @@ function submitOrder($db){
     echo $_POST['ualias'];
     echo isset($arr);
 
-
-    /*if(isset($arr)){
+    if(isset($arr)){
         header('location:myOrder.php');
     }else{
         session_start();
         $_SESSION['msg'] = "订单失败，请重新选择";
-    }*/
+    }
 
 
 }

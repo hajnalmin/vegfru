@@ -15,7 +15,6 @@
     </fieldset>
     <form class="layui-form layui-form-pane" action="admin_handle.php" style="margin-left:200px;overflow:hidden;" method="post">
         <input type="hidden" name="method" readonly value="adminCateAdd">
-
         <div class="layui-form-item">
             <label class="layui-form-label">商品类名</label>
 
@@ -24,7 +23,6 @@
                        class="layui-input">
             </div>
         </div>
-
         <div class="layui-form-item">
             <div class="layui-input-block">
                 <button type="submit" class="layui-btn" lay-submit="" lay-filter="" >确认</button>

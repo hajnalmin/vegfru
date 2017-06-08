@@ -54,11 +54,6 @@
                     <input type="text" class="utel" name="utel"/>
                     <span class="red">*</span>
                 </div>
-                <div class="f_group">
-                    <span>验证码：</span>
-                    <input type="text" class="ucode"/>
-                    <label class="show_code">Ac4e</label>
-                </div>
                 <div class="f_group btn">
                     <div class="reg_btn">
                         <button type="submit">注册</button>

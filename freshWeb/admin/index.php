@@ -7,7 +7,6 @@ if (isset($_SESSION['name'])) {
 } else {
     header('location:login.php');
 }
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,16 +22,14 @@ if (isset($_SESSION['name'])) {
 <body>
 <div class="layout-admin">
     <header class="layout-header">
-        <span class="header-logo">果蔬新鲜后台管理</span>
+        <span class="header-logo">果然新鲜后台管理</span>
         <a class="header-menu-btn" href="javascript:;"><i class="icon-font">&#xe600;</i></a>
         <ul class="header-bar">
             <li class="header-bar-role"><a href="javascript:;">超级管理员</a></li>
             <li class="header-bar-nav">
                 <a href="javascript:;"><?php echo $name;?><i class="icon-font" style="margin-left:5px;">&#xe60c;</i></a>
                 <ul class="header-dropdown-menu">
-                    <li><a href="javascript:;">个人信息</a></li>
-                    <li><a href="javascript:;">切换账户</a></li>
-                    <li><a href="javascript:;">退出</a></li>
+                    <li><a href="admin_handle.php?method=logout">退出</a></li>
                 </ul>
             </li>
             <li class="header-bar-nav">
@@ -66,7 +63,7 @@ if (isset($_SESSION['name'])) {
             <iframe class="body-iframe" name="iframe0" width="100%" height="99%" src="hello.php" frameborder="0" data-id="home.html" seamless></iframe>
         </div>
     </section>
-    <div class="layout-footer">@2017 zhm@copyright</div>
+    <div class="layout-footer">2017 zhm@copyright</div>
 </div>
 <script type="text/javascript" src="common/lib/jquery-1.9.0.min.js"></script>
 <script type="text/javascript" src="common/js/sccl.js"></script>

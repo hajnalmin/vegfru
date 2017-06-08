@@ -12,7 +12,7 @@
     <ul class="onService">
         <li class="s_title"><a href="javascript:;">在线客服</a></li>
         <li class="qq_list">
-            <p><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1017331633&site=qq&menu=yes"><img
+            <p><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1541750155&site=qq&menu=yes"><img
                         border="0" src="common/img/qq.gif"><span>蜜桃</span></a></p>
 
             <p><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2337637784&site=qq&menu=yes"><img

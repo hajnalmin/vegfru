@@ -17,7 +17,8 @@ if (isset($_SESSION['ualias'])) {
 
             if(isset($ualias)){
                 echo "<span>当前用户：</span>";
-                echo $ualias;
+                echo "<span>".$ualias."</span>";
+                echo "<span>&nbsp;&nbsp;<a href='myOrder.php'>[个人中心]</a></span>";
                 echo '</div><div class="topCart">';
                 echo '<span><a href="handle.php?method=logout" style="color: blue;">[ 退出 ]</a></span></div>';
             }else{

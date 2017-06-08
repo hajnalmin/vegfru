@@ -39,6 +39,19 @@ function login($db){
 }
 
 /**
+ * 退出登录
+ */
+function logout(){
+    session_start();
+    if(isset($_SESSION['name']))
+    {
+        $_SESSION['name'] = null;
+        header("location:login.php");
+    }
+
+}
+
+/**
  * 新增一个管理员
  * @param $db
  */

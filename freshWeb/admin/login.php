@@ -13,7 +13,7 @@
 <body class="login-bg">
 <div class="login-box">
     <header>
-        <h1>果蔬新鲜后台管理系统</h1>
+        <h1>果然新鲜后台管理系统</h1>
     </header>
     <div class="login-main">
         <form action="admin_handle.php" class="layui-form" method="post">

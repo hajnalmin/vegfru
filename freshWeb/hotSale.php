@@ -50,14 +50,14 @@ require "utils/DBConfig.php";
                     foreach ($arr as $i) {
                         echo '<div class="box">';
                         echo "<img src='upfiles/" . $i['goodimg'] . "'>";
-                        echo '<p class="box_title"><a href="#">'.$i['goodname'].'</a></p>';
-                        echo '<p class="box_price">';
-                        echo '<span>￥</span><span>'.$i['oldprice'].'</span></p>';
-                        echo '<p class="buy"><a href="buyPro.php?id='.$i['id'].'">购买</a></p></div>';
-                    }
+                echo '<p class="box_title"><a href="#">'.$i['goodname'].'</a></p>';
+                echo '<p class="box_price">';
+                    echo '<span>￥</span><span>'.$i['oldprice'].'</span></p>';
+                echo '<p class="buy"><a href="buyPro.php?id='.$i['id'].'">购买</a></p></div>';
+            }
 
-                    ?>
-                </div>
+            ?>
+        </div>
 
 
             </div>

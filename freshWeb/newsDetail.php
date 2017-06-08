@@ -26,6 +26,9 @@ $newEachData = $arr[0];
             margin: 20px;
             font-size: 20px;
         }
+        .info{
+            text-align: left;
+        }
     </style>
 </head>
 <body>
@@ -46,7 +49,7 @@ $newEachData = $arr[0];
 
                 <?php
                     echo "<p class='con_title'>".$newEachData['newtitle']."</p>";
-                    echo "<p>".$newEachData['news']."</p>";
+                    echo "<p class='info'>".$newEachData['news']."</p>";
 
                 ?>
 
